@@ -3,6 +3,10 @@ this is going to be the javascript libary for nerd herder
 time to herd some nerds /*/
 var mainDiv;
 var userName;
+//text specific to the sex of user.
+var maletext=[];
+var femaletext=[];
+var unsuretext=[];
 function startGame()
 // 1 = male
 // 2 = female
