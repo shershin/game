@@ -4,6 +4,7 @@ time to herd some nerds /*/
 var mainDiv;
 var userName;
 //text specific to the sex of user.
+var sex=0;
 var maletext=[];
 var femaletext=[];
 var unsuretext=[];
@@ -20,30 +21,31 @@ document.getElementById('mainDiv').innerHTML =
 }
 function genderChoice(choice)
 { 
+sex=choice;                      
 var textbox = "<input type='textbox' id='userName' value=''>";
 var ready = "<button onclick='userName()'>Ready</button>";
 var doneYet = "When you are done entering your name click the button.";
-  if (choice === 1)
-  {document.getElementById('mainDiv').innerHTML = 
+switch(choice)
+case 1:
+	document.getElementById('mainDiv').innerHTML = 
               "Oh great another male just what we need. <br>" +
               "Ugh, What is your name? <br>" +
               textbox + "<br>" + doneYet + "<br>" + ready;
-  } else if (choice === 2)
-  { document.getElementById('mainDiv').innerHTML =
+case 2:
+	document.getElementById('mainDiv').innerHTML =
               "Oh hello, you can call me lover! <br>" +
               "What should I call you? <br>" +
                textbox + "<br>" + doneYet + "<br>" + ready;
-  } else if (choice === 3)
-  { document.getElementById('mainDiv').innerHTML =
+case 3:
+	document.getElementById('mainDiv').innerHTML =
               "Umm okay, this makes my job a bit harder. <br>" +
               "Well what should i call you then? <br>" +
               textbox + "<br>" + doneYet + "<br>" +  ready;
-  } else
-  { document.getElementById('mainDiv').innerHTML =
+case 4:
+	document.getElementById('mainDiv').innerHTML =
               "Okay give me the name you wished to be called," +
               " cause I want to get this show on the road. <br>" +
               textbox + "<br>" + ready;
-  }
 }
 function userName()
 { 
