@@ -132,22 +132,22 @@ function battle(benemy)
 	seconddiv.innerHTML=battlemenu();
 	var temphealth=benemy.health
 	turn=0;
-	/*while(temphealth>0||currentnerdclass.health>0)
+	/*if(temphealth>0)
 	{
 		if(actionflag)
 		{
 		enemyaction(benemy);
+			if(currentnerdclass.health>0)
+			{
+			battlelose();
+			}
 		actionflag=false;
 		}
 	}
-	if(temphealth<=0)
-	{
+	else{
 	battlewin();
 	}
-	else
-	{
-	battlelose();
-	}*/
+	*/
 }
 function battlemenu()
 {
