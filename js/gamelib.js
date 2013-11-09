@@ -1,6 +1,7 @@
 /*/ michael shershin & keshine o'young
 this is going to be the javascript libary for nerd herder
 time to herd some nerds /*/
+//global variables
 var mainDiv;
 var userName;
 //text specific to the sex of user.
@@ -11,6 +12,21 @@ var unsuretext=[];
 var nerd=0;
 var maindiv;
 var seconddiv;
+var xboxmovelist=new movelist("360 no scope","grenade toss","light shield","verbal harass");
+var pcmovelist=new movelist("pc thing","grenade toss","light shield","verbal harass");
+var socmovelist=new movelist("FARMING POWER","grenade toss","light shield","invite spam");
+var animemovelist=new movelist("kamehameha","grenade toss","light shield","verbal harass");
+var somethingnerd=new enemy("pc elitist",5,"social media","the pc nerd believes he is part of the pc master race, better than all other nerds.",xboxmovelist);
+var anothernerd=new enemy();
+var actionflag=false;
+var xboxnerd=new nerdclass("xbox nerd",xboxmovelist,20);
+var pcnerd=new nerdclass("pc nerd",pcmovelist,20);
+var socnerd=new nerdclass("social media nerd",socmovelist,20);
+var animenerd=new nerdclass("anime nerd",animemovelist,20);
+var currentnerdclass=xboxnerd;
+var turn;
+var nerdlist=[xboxnerd,socnerd,pcnerd,animenerd];
+var itemlist=["pokeball","senzu bean","controller","smart phone"];
 function startGame()
 // 1 = male
 // 2 = female
@@ -87,7 +103,7 @@ function storyStart()
           "At that moment they knew he wasted his life by not being a nerd <br>" +
           "so he left his career of being a teacher and went to collect all the powers <br>" +
           " <br><br><br><br> so started the herding of nerds";
-		  seconddiv.innerHTML=battlemenu();
+		  seconddiv.innerHTML="<br><button id='battle' onclick='battle(somethingnerd)'>FIGHT</button>"
 }
 function enemy(name,health,weakness,description,movelist)
 {
@@ -104,58 +120,62 @@ function movelist(attack1,attack2,defend,status)
 	this.defend=defend;
 	this.status=status;
 }
-function nerdclass(name,movelist)
+function nerdclass(name,movelist,health)
 {
 	this.name=name;
 	this.movelist=movelist;
+	this.health=health;
 }
-var xboxmovelist=new movelist("360 no scope","grenade toss","light shield","verbal harass");
-var somethingnerd=new enemy("pc elitist",5,"social media","the pc nerd believes he is part of the pc master race, better than all other nerds.",xboxmovelist);
-var anothernerd=new enemy();
-var actionflag=false;
-var pcnerd=new nerdclass("pc nerd",xboxmovelist);
-var currentnerdclass=pcnerd;
 function battle(benemy)
 {
 	maindiv.innerHTML=benemy.name+" wants to battle. What will you do?";
 	seconddiv.innerHTML=battlemenu();
 	var temphealth=benemy.health
-	while(benemy.health>0)
+	turn=0;
+	/*while(temphealth>0||currentnerdclass.health>0)
 	{
-		while(actionflag)
+		if(actionflag)
 		{
 		enemyaction(benemy);
 		actionflag=false;
 		}
 	}
+	if(temphealth<=0)
+	{
 	battlewin();
+	}
+	else
+	{
+	battlelose();
+	}*/
 }
-
-function playeraction()
-{
-
-}
-
 function battlemenu()
 {
 	var attack = "<button id='attack' onclick='attack()'>Attack</button>";
-	var item = "<button id='items' onclick='itemlist()'>Item</button>";
-	var change = "<button id='nerds' onclick='nerdlist()'>ChgNrd</button>";
+	var item = "<button id='items' onclick='listitems()'>Item</button>";
+	var change = "<button id='nerds' onclick='listnerds()'>ChgNrd</button>";
 	var flee = "<button id='flee' onclick='flee()'>Flee</button>";
 	return attack+item+change+flee;
 }
 function enemyaction(enemy)
 {
-	var x = Math.floor(2*Math.random());
+	if(enemy.name.indexOf("boss"))
+	{
+		if(turn>10)
+		{
+		battlelose();
+		}
+	}
+	var x = Math.floor(3*Math.random());
 	enemy.movelist[x];
 }
 function attack()
 {
 	seconddiv.innerHTML=battlemenu();
-	var button1="<br><input type='button' id='attack1' onclick=''>";
-	var button2="<br><input type='button' id='attack2' onclick=''>";
-	var button3="<br><input type='button' id='defend' onclick=''>";
-	var button4="<br><input type='button' id='status' onclick=''>";
+	var button1="<br><input type='button' id='attack1' onclick='battleaction(this)'>";
+	var button2="<br><input type='button' id='attack2' onclick='battleaction(this)'>";
+	var button3="<br><input type='button' id='defend' onclick='battleaction(this)'>";
+	var button4="<br><input type='button' id='status' onclick='battleaction(this)'>";
 	seconddiv.innerHTML=seconddiv.innerHTML+button1+button2+button3+button4;
 	document.getElementById('attack1').value=currentnerdclass.movelist.attack1;
 	document.getElementById('attack2').value=currentnerdclass.movelist.attack2;
@@ -166,43 +186,55 @@ function attack()
 	document.getElementById('nerds').disabled=false;
 	document.getElementById('flee').disabled=false;
 }
-function itemlist()
+function listitems()
 {
 	seconddiv.innerHTML=battlemenu();
-	var button1="<br><input type='button' id='item1' onclick=''>";
-	var button2="<br><input type='button' id='item2' onclick=''>";
-	var button3="<br><input type='button' id='item3' onclick=''>";
-	var button4="<br><input type='button' id='item4' onclick=''>";
+	var button1="<br><input type='button' id='item0' onclick=''>";
+	var button2="<br><input type='button' id='item1' onclick=''>";
+	var button3="<br><input type='button' id='item2' onclick=''>";
+	var button4="<br><input type='button' id='item3' onclick=''>";
 	seconddiv.innerHTML=seconddiv.innerHTML+button1+button2+button3+button4;
-	document.getElementById('item1').value=itemlist.item1;
-	document.getElementById('item2').value=itemlist.item2;
-	document.getElementById('item3').value=itemlist.item3;
-	document.getElementById('item4').value=itemlist.item4;
+	for(var i=0;i<nerdlist.length;i++)
+	{
+	var inputid='item'+i
+	document.getElementById(inputid).value=itemlist[i];
+	}
 	document.getElementById('attack').disabled=false;
 	document.getElementById('items').disabled=true;
 	document.getElementById('nerds').disabled=false;
 	document.getElementById('flee').disabled=false;
 }
-function nerdlist()
+function listnerds()
 {
 	seconddiv.innerHTML=battlemenu();
-	var button1="<br><input type='button' id='attack1' onclick=''>";
-	var button2="<br><input type='button' id='attack2' onclick=''>";
-	var button3="<br><input type='button' id='defend' onclick=''>";
-	var button4="<br><input type='button' id='status' onclick=''>";
+	var button1="<br><input type='button' id='nerd0'>";
+	var button2="<br><input type='button' id='nerd1'>";
+	var button3="<br><input type='button' id='nerd2'>";
+	var button4="<br><input type='button' id='nerd3'>";
 	seconddiv.innerHTML=seconddiv.innerHTML+button1+button2+button3+button4;
-	document.getElementById('attack1').value=currentnerdclass.movelist.attack1;
-	document.getElementById('attack2').value=currentnerdclass.movelist.attack2;
-	document.getElementById('defend').value=currentnerdclass.movelist.defend;
-	document.getElementById('status').value=currentnerdclass.movelist.status;
+	for(var i=0;i<nerdlist.length;i++)
+	{
+	var inputid=document.getElementById('nerd'+i)
+	var funcinput="chgnerd("+i+")";
+	inputid.setAttribute("onclick",funcinput);
+	inputid.value=nerdlist[i].name;
+	}
 	document.getElementById('attack').disabled=false;
 	document.getElementById('items').disabled=false;
 	document.getElementById('nerds').disabled=true;
 	document.getElementById('flee').disabled=false;
 }
+function chgnerd(input)
+{
+currentnerdclass=nerdlist[input];
+}
 function flee()
 {
 
+}
+function battleaction(button)
+{
+	
 }
 function battlewin()
 {
