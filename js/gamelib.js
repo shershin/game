@@ -80,8 +80,12 @@ function userName()
 { 
 //yes === 1
 //no === 2
+<<<<<<< HEAD
 userName = document.getElementById('userName').value;
 
+=======
+var userName = document.getElementById('userName').value;
+>>>>>>> adac6e92902351276173600cafd710be7d97fbd7
 var yes = "<button onclick='timetogetgoing(true)'>Yes!!!</button>";
 var no = "<button onclick='timetogetgoing(false)'>No??</button>";
 maindiv.innerHTML = 
@@ -103,6 +107,7 @@ function storyStart()
           "Till he caught himself playing pokemon <br>" +
           "At that moment they knew he wasted his life by not being a nerd <br>" +
           "so he left his career of being a teacher and went to collect all the powers <br>" +
+<<<<<<< HEAD
           " <br><br><br><br> so started the herding of nerds<br>" +
           "<button onclick='mapStart()'>Start</button>";
                   seconddiv.innerHTML="<br><button id='battle' onclick='battle(somethingnerd)'>FIGHT</button>"
@@ -500,6 +505,26 @@ function movelist(attack1,attack2,defend,status)
 	this.defend=defend;
 	this.status=status;
 }
+=======
+          " <br><br><br><br> so started the herding of nerds";
+		  seconddiv.innerHTML="<br><button id='battle' onclick='battle(somethingnerd)'>FIGHT</button>"
+}
+function enemy(name,health,weakness,description,movelist)
+{
+	this.name=name;
+	this.health=health;
+	this.weakness=weakness;
+	this.description=description;
+	this.movelist=movelist;
+}
+function movelist(attack1,attack2,defend,status)
+{
+	this.attack1=attack1;
+	this.attack2=attack2;
+	this.defend=defend;
+	this.status=status;
+}
+>>>>>>> adac6e92902351276173600cafd710be7d97fbd7
 function nerdclass(name,movelist,health)
 {
 	this.name=name;
@@ -512,6 +537,25 @@ function battle(benemy)
 	seconddiv.innerHTML=battlemenu();
 	var temphealth=benemy.health
 	turn=0;
+<<<<<<< HEAD
+=======
+	/*if(temphealth>0)
+	{
+		if(actionflag)
+		{
+		enemyaction(benemy);
+			if(currentnerdclass.health>0)
+			{
+			battlelose();
+			}
+		actionflag=false;
+		}
+	}
+	else{
+	battlewin();
+	}
+	*/
+>>>>>>> adac6e92902351276173600cafd710be7d97fbd7
 }
 function battlemenu()
 {
