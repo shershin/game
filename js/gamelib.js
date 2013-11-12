@@ -49,6 +49,7 @@ switch(choice)
 {
 case 1:
 <<<<<<< HEAD
+<<<<<<< HEAD
         maindiv.innerHTML = 
               "Oh great another male just what we need. <br>" +
               "Ugh, What is your name? <br>" +
@@ -72,6 +73,8 @@ break;
 case 4:
         maindiv.innerHTML =
 =======
+=======
+>>>>>>> master
 	maindiv.innerHTML = 
               "Oh great another male just what we need. <br>" +
               "Ugh, What is your name? <br>" +
@@ -94,7 +97,10 @@ case 3:
 break;
 case 4:
 	maindiv.innerHTML =
+<<<<<<< HEAD
 >>>>>>> cc5915f2c16529de4ff13b5ca6befe8d7bf7ac82
+=======
+>>>>>>> master
               "Okay give me the name you wished to be called," +
               " cause I want to get this show on the road. <br>" +
               textbox + "<br>" + ready;
@@ -109,7 +115,10 @@ function userName()
 userName = document.getElementById('userName').value;
 =======
 var userName = document.getElementById('userName').value;
+<<<<<<< HEAD
 >>>>>>> cc5915f2c16529de4ff13b5ca6befe8d7bf7ac82
+=======
+>>>>>>> master
 var yes = "<button onclick='timetogetgoing(true)'>Yes!!!</button>";
 var no = "<button onclick='timetogetgoing(false)'>No??</button>";
 maindiv.innerHTML = 
@@ -524,6 +533,7 @@ function enemy(name,health,weakness,description,movelist)
 	this.weakness=weakness;
 	this.description=description;
 	this.movelist=movelist;
+<<<<<<< HEAD
 }
 function movelist(attack1,attack2,defend,status)
 {
@@ -532,6 +542,16 @@ function movelist(attack1,attack2,defend,status)
 	this.defend=defend;
 	this.status=status;
 }
+=======
+}
+function movelist(attack1,attack2,defend,status)
+{
+	this.attack1=attack1;
+	this.attack2=attack2;
+	this.defend=defend;
+	this.status=status;
+}
+>>>>>>> master
 function nerdclass(name,movelist,health)
 {
 	this.name=name;
@@ -544,11 +564,16 @@ function battle(benemy)
 	seconddiv.innerHTML=battlemenu();
 	var temphealth=benemy.health
 	turn=0;
+<<<<<<< HEAD
 	/*while(temphealth>0||currentnerdclass.health>0)
+=======
+	/*if(temphealth>0)
+>>>>>>> master
 	{
 		if(actionflag)
 		{
 		enemyaction(benemy);
+<<<<<<< HEAD
 		actionflag=false;
 		}
 	}
@@ -560,6 +585,19 @@ function battle(benemy)
 	{
 	battlelose();
 	}*/
+=======
+			if(currentnerdclass.health>0)
+			{
+			battlelose();
+			}
+		actionflag=false;
+		}
+	}
+	else{
+	battlewin();
+	}
+	*/
+>>>>>>> master
 }
 function battlemenu()
 {
@@ -651,5 +689,8 @@ function battleaction(button)
 function battlewin()
 {
 return;
+<<<<<<< HEAD
 >>>>>>> cc5915f2c16529de4ff13b5ca6befe8d7bf7ac82
+=======
+>>>>>>> master
 }
