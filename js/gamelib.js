@@ -453,6 +453,7 @@ function battlecheck()
         }
 }
 //map bitches
+var back2mainmap;
 var maristBack;
 var mordorBack;
 var racoonBack;
@@ -487,11 +488,13 @@ if(player.firstboss)
 //marist 
 function maristTown()
 {
+back2mainmap = "<button onclick='mapStart()'>Back</button>";
   mapdiv.innerHTML = 
           "<button onclick='maristBuild(1)'>Building</button>" +
           "<button onclick='maristBuild(2)'>Building</button>" +
           "<button onclick='maristBuild(3)'>Building</button><br>" +
-          "<button onclick='maristBuild(4)'>Building</button>";
+          "<button onclick='maristBuild(4)'>Building</button><br>" +
+		  back2mainmap;
   document.body.background = "../game/pic/marist.jpg";
 }
 function maristBuild(num)
@@ -563,7 +566,8 @@ function mordorTown()
           "<button onclick='mordorBuild(1)'>Building</button>" +
           "<button onclick='mordorBuild(2)'>Building</button>" +
           "<button onclick='mordorBuild(3)'>Building</button><br>" +
-          "<button onclick='mordorBuild(4)'>Building</button>";
+          "<button onclick='mordorBuild(4)'>Building</button><br>" +
+		  back2mainmap;
   document.body.background = "../game/pic/mordor.jpg";
 }
 function mordorBuild(num)
@@ -631,7 +635,8 @@ function racoonTown()
           "<button onclick='racoonBuild(1)'>Building</button>" +
           "<button onclick='racoonBuild(2)'>Building</button>" +
           "<button onclick='racoonBuild(3)'>Building</button><br>" +
-          "<button onclick='racoonBuild(4)'>Building</button>";
+          "<button onclick='racoonBuild(4)'>Building</button><br>" +
+		  back2mainmap;
   document.body.background = "../game/pic/racooncity.jpg";
 }
 function racoonBuild(num)
@@ -699,7 +704,8 @@ function electricTown()
           "<button onclick='electricBuild(1)'>Building</button>" +
           "<button onclick='electricBuild(2)'>Building</button>" +
           "<button onclick='electricBuild(3)'>Building</button><br>" +
-          "<button onclick='electricBuild(4)'>Building</button>";
+          "<button onclick='electricBuild(4)'>Building</button><br>" +
+		  back2mainmap;
   document.body.background = "../game/pic/electriccity.jpg";
 }
 function electricBuild(num)
@@ -762,7 +768,8 @@ function palletTown()
 { mapdiv.innerHTML = 
 		"You must be strong to have made it this far but prepare to die" +
 		"<br>" +
-		"<button onclick='battle(finalboss)'>FIGHT</button>";
+		"<button onclick='battle(finalboss)'>FIGHT</button><br>" +
+		back2mainmap;
 	document.body.background = "../game/pic/pallettown.png";
 }
 function gamewin(){
