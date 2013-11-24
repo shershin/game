@@ -119,7 +119,6 @@ break;
 case "thing":
 article = "it";
 break;
-	document.body.background = "../game/pic/pic.jpg";
 }
   maindiv.innerHTML =
           "Once apon a time there was a young"+player.sex+" who hated all nerds <br>" +
@@ -465,6 +464,7 @@ var racoonFight;
 var electricFight;
 function mapStart()
 {
+document.body.background = "../game/pic/pic.jpg";
 maindiv.innerHTML=""
 mapdiv.innerHTML="";
 seconddiv.innerHTML="";
@@ -564,7 +564,7 @@ function mordorTown()
           "<button onclick='mordorBuild(2)'>Building</button>" +
           "<button onclick='mordorBuild(3)'>Building</button><br>" +
           "<button onclick='mordorBuild(4)'>Building</button>";
-  document.body.background = "..game/pic/mordor.jpg";
+  document.body.background = "../game/pic/mordor.jpg";
 }
 function mordorBuild(num)
 {
@@ -632,7 +632,7 @@ function racoonTown()
           "<button onclick='racoonBuild(2)'>Building</button>" +
           "<button onclick='racoonBuild(3)'>Building</button><br>" +
           "<button onclick='racoonBuild(4)'>Building</button>";
-  document.body.background = "..game/pic/racooncity.jpg";
+  document.body.background = "../game/pic/racooncity.jpg";
 }
 function racoonBuild(num)
 {
@@ -700,7 +700,7 @@ function electricTown()
           "<button onclick='electricBuild(2)'>Building</button>" +
           "<button onclick='electricBuild(3)'>Building</button><br>" +
           "<button onclick='electricBuild(4)'>Building</button>";
-  document.body.boackground = "../game/pic/electriccity.jpg";
+  document.body.background = "../game/pic/electriccity.jpg";
 }
 function electricBuild(num)
 {
