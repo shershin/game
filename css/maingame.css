@@ -1,2 +1,15 @@
-body{text-align:center;}
-div{text-align:center;}
+button #maristTown {
+background-image: url('../pic/marist.jpg')
+}
+button #mordorTown {
+background-image: url('../pic/mordor.jpg')
+}
+button #palletTown {
+background-image: url('../pic/pallettown.png')
+}
+button #racoonTown {
+background-image: url('../pic/racooncity.jpg')
+}
+button #electricTown {
+background-image: url('../pic/electriccity.jpg')
+}
