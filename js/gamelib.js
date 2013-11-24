@@ -469,10 +469,10 @@ maindiv.innerHTML=""
 mapdiv.innerHTML="";
 seconddiv.innerHTML="";
 var maristbutton="<button onclick='maristTown()' id='maristTown'>Marist</button>";
-var mordorbutton="<button onclick='mordorTown()' id='mordorTown' disabled=disabled style = 'background-image:\'../pic/mordor.jpg\''>Mordor</button>";
-var palletbutton="<button onclick='palletTown()' id='paletTown' disabled=disabled style = 'background-image:\'../pic/pallettown.png\''>Pallet Town</button>";
-var electricbutton="<button onclick='electricTown()' id='electricTown' disabled=disabled style = 'background-image:\'../pic/electriccity.jpg\''>Electric Town</button>"
-var racoonbutton="<button onclick='racoonTown()' id='racoonTown' disabled=disabled style = 'background-image:\'../pic/racooncity.jpg\''>Racoon City</button>";
+var mordorbutton="<button onclick='mordorTown()' id='mordorTown' disabled=disabled >Mordor</button>";
+var palletbutton="<button onclick='palletTown()' id='paletTown' disabled=disabled >Pallet Town</button>";
+var electricbutton="<button onclick='electricTown()' id='electricTown' disabled=disabled>Electric Town</button>"
+var racoonbutton="<button onclick='racoonTown()' id='racoonTown' disabled=disabled>Raccoon City</button>";
 mapdiv.innerHTML =
 	"Click on the town you want to enter but you have to beat a few the current area in order to move to the next.<br>" +
 	maristbutton+ "<br>" +mordorbutton+electricbutton+racoonbutton+ "<br>" +palletbutton;
@@ -767,4 +767,7 @@ function palletTown()
 }
 function gamewin(){
 alert("CONGRATULATIONS YOU WIN, YOU ARE A GIANT NERD");
+document.body.background = "../game/pic/portalcake.jpg";
+mapdiv.innerHTML = 
+		"<button onclick='startGame()'>Play Again</button>";
 }
