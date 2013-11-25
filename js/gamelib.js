@@ -532,13 +532,17 @@ function maristPerson(num)
       { mapdiv.innerHTML =
                 "Studing sucks!!!" +
 				"<br>"+
-                 maristBack + maristFight;
+                maristFight +
+				"<br>" +
+				 maristBack;
       }
   else if (num === 2)
       { mapdiv.innerHTML =
                 "Have you meet Michael Shershin or Keshine O\'young....I haven\'t but I herd they are two amazing guys." +
                 "<br>" +
-				maristBack + maristFight;
+				maristFight +
+				"<br>" +
+				maristBack;
       }
   else if (num === 3)
       { mapdiv.innerHTML = 
@@ -547,15 +551,17 @@ function maristPerson(num)
                 "Try to talk to everyone they may give you more helpful hints." + 
                 "<br>Also be wary of the darkside." +
 				"<br>"+
-                maristBack + maristFight;
+                maristFight +
+				"<br>" +
+				maristBack;
       }
   else
 	  { mapdiv.innerHTML =
 				"Welcome to my lair " + player.name +
 				" it is time to battle" +
 				"<br>" +
-				maristBack +
-				"<button onclick='battle(nerdenemyboss)'>FIGHT</button>";
+				"<button onclick='battle(nerdenemyboss)'>FIGHT</button><br>" +
+				maristBack;
 	  }
 		
 }
@@ -578,13 +584,13 @@ mordorBack = "<button onclick='mordorTown()'>Back</button>";
       { mapdiv.innerHTML =
                 "<button onclick='mordorPerson(1)'>Person</button>" +
 				"<br>" +
-                mordorBack + mordorFight;
+				mordorBack;
       } 
   else if (num === 2)
       { mapdiv.innerHTML =
                 "<button onclick='mordorPerson(2)'>Person</button>" +
 				"<br>" +
-                mordorBack + mordorFight;
+                mordorBack;
       }
   else if (num === 3)
       { mapdiv.innerHTML =
@@ -605,26 +611,33 @@ function mordorPerson(num)
       { mapdiv.innerHTML =
                 "Finding out peoples weakness is key for victory!!" +
 				"<br>" +
-                 mordorBack + mordorFight;
+                 mordorFight +
+				"<br>" +
+				mordorBack;
       }
   else if (num === 2)
       { mapdiv.innerHTML =
                 "Have you seen some hobbits running around?" +
 				"<br>" +
-                 mordorBack + mordorFight;
+                mordorFight +
+				"<br>" +
+				mordorBack;
       }
   else if (num === 3)
       { mapdiv.innerHTML = 
                 "Movies are amazing I am in love with the big screen" + 
                 "<br>" +
-				mordorBack + mordorFight;
+				mordorFight +
+				"<br>" +
+				mordorBack;
       }
   else 
 	  { mapdiv.innerHTML = 
 			"you may have been able to beat my brothers but there is no way you can beat me" +
 			"<br>" +
-			mordorBack +
-			"<button onclick='battle(movieenemyboss)'>FIGHT</button>";
+			"<button onclick='battle(movieenemyboss)'>FIGHT</button>" +
+			"<br>" +
+			mordorBack;
 			
 	  }
 }
@@ -674,27 +687,34 @@ function racoonPerson(num)
       { mapdiv.innerHTML =
                 "Gears of War for life!" +
 				"<br>" +
-                 racoonBack + racoonFight;
+                racoonFight +
+				"<br>" +
+				racoonBack;
       }
   else if (num === 2)
       { mapdiv.innerHTML =
                 "Once upon a time there was a teacher who made his students write a video game....sorry I forgot the ending." +
 				"<br>" +
-                 racoonBack + racoonFight;
+                racoonFight +
+				"<br>" +
+				racoonBack;
       }
   else if (num === 3)
       { mapdiv.innerHTML = 
                 "Using items increase you chance to win." + 
 				"<br>" +
-                racoonBack + racoonFight;
+                racoonFight +
+				"<br>" +
+				racoonBack;
                 
       }
   else
 	  {mapdiv.innerHTML = 
 				"MUHAHAHAHAHAHAHAHAHAHA welcome to the arena" +
+				"<br>" + 
+				"<button onclick='battle(videogameenemyboss)'>FIGHT</button>" +
 				"<br>" +
-				racoonBack + 
-				"<button onclick='battle(videogameenemyboss)'>FIGHT</button>";
+				racoonBack;
 	  }
 }
 //Electric City
@@ -743,25 +763,32 @@ function electricPerson(num)
       { mapdiv.innerHTML =
                 "When life gives you lemons, watch anime." +
 				"<br>" +
-                 electricBack + electricFight;
+                electricFight +
+				"<br>" +
+                electricBack;
       }
   else if (num === 2)
       { mapdiv.innerHTML =
                 "Welcome to otaku land." +
 				"<br>" +
-                 electricBack + electricFight;
+                electricFight +
+				"<br>" +
+                electricBack;
       }
   else if (num === 3)
       { mapdiv.innerHTML = 
                 "Hey want to watch anime with me?" +
 				"<br>" +
-                electricBack + electricFight; 
+                electricFight +
+				"<br>" +
+                electricBack; 
       }
   else
 	{ 	mapdiv.innerHTML="Stop letting the light in!!!!" +
 		"<br>" +
-		electricBack +
-		"<button onclick='battle(animeenemyboss)'>FIGHT</button>";
+		"<button onclick='battle(animeenemyboss)'>FIGHT</button>" +
+		"<br>" +
+        electricBack;
 	}
 }
 function palletTown()
