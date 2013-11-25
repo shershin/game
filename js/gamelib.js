@@ -800,8 +800,8 @@ function palletTown()
 	document.body.background = "../game/pic/pallettown.png";
 }
 function gamewin(){
-alert("CONGRATULATIONS YOU WIN, YOU ARE A GIANT NERD");
 document.body.background = "../game/pic/portalcake.jpg";
 mapdiv.innerHTML = 
 		"<button onclick='startGame()'>Play Again</button>";
+alert("CONGRATULATIONS YOU WIN, YOU ARE A GIANT NERD");
 }

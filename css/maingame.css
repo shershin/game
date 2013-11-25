@@ -3,3 +3,10 @@ body
 background-size:1400px 600px;
 background-repeat:no-repeat;
 }
+div
+{
+text-align:center;
+background-color:white;
+margin-right: 200px;
+margin-left:200px;
+}
