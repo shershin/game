@@ -50,6 +50,8 @@ maindiv.innerHTML =
                       "<button onclick='genderChoice(1)'>MALE</button>" +
                       "<button onclick='genderChoice(2)'>FEMALE</button>" +
                       "<button onclick='genderChoice(3)'>UNSURE</button>";
+seconddiv.innerHTML="";
+mapdiv.innerHTML="";
 }
 function genderChoice(choice)
 {                       
@@ -121,7 +123,7 @@ article = "it";
 break;
 }
   maindiv.innerHTML =
-          "Once apon a time there was a young"+player.sex+" who hated all nerds <br>" +
+          "Once apon a time there was a young "+player.sex+" who hated all nerds <br>" +
           "Till "+article+" caught himself playing pokemon <br>" +
           "At that moment "+article+" knew "+article+" had wasted his life by not being a nerd <br>" +
           "so "+article+" quit being a teacher and went to collect all the powers <br>" +
@@ -442,6 +444,7 @@ function battlecheck()
                         break;
 						case "final boss":
 						gamewin();
+						return;
                         }
                 }
                 mapStart();
@@ -800,8 +803,10 @@ function palletTown()
 	document.body.background = "../game/pic/pallettown.png";
 }
 function gamewin(){
+alert("CONGRATULATIONS YOU WIN, YOU ARE A GIANT NERD");
 document.body.background = "../game/pic/portalcake.jpg";
 mapdiv.innerHTML = 
 		"<button onclick='startGame()'>Play Again</button>";
-alert("CONGRATULATIONS YOU WIN, YOU ARE A GIANT NERD");
+maindiv.innerHTML="";
+seconddiv.innerHTML="";
 }
