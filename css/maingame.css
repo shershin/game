@@ -2,11 +2,19 @@ body
 {
 background-size:1400px 600px;
 background-repeat:no-repeat;
+text-align: center;
 }
 div
 {
-text-align:center;
 background-color:white;
-margin-right: 200px;
-margin-left:200px;
+display:inline-block;
+padding-right: 0px;
+padding-left: 0px;
+margin-left:500px;
+margin-right: 500px;
+}
+button
+{
+margin:3px 3px;
+padding:0px 0px;
 }

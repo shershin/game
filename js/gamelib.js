@@ -2,7 +2,7 @@
 this is going to be the javascript libary for nerd herder
 time to herd some nerds /*/
 //global variables
-var mainDiv;
+var maindiv;
 var mapdiv;
 var seconddiv;
 var nerdmovelist=new movelist("textbook smack","calculator drop","cower","contemplate");
