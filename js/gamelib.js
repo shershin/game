@@ -499,6 +499,7 @@ back2mainmap = "<button onclick='mapStart()'>Back</button>";
           "<button onclick='maristBuild(4)'>Building</button><br>" +
 		  back2mainmap;
   document.body.background = "../game/pic/marist.jpg";
+  alert("Welcome to Marist, here you will learn the basics. Don't forget to check every building.");
 }
 function maristBuild(num)
 {
@@ -533,7 +534,7 @@ function maristPerson(num)
 { 
   if (num === 1)
       { mapdiv.innerHTML =
-                "Studing sucks!!!" +
+                "Studying sucks! Mr. Johnson assigns so much work agh." +
 				"<br>"+
                 maristFight +
 				"<br>" +
@@ -578,6 +579,7 @@ function mordorTown()
           "<button onclick='mordorBuild(4)'>Building</button><br>" +
 		  back2mainmap;
   document.body.background = "../game/pic/mordor.jpg";
+  alert("Welcome to Mordor, try not to open doors you can't close.");
 }
 function mordorBuild(num)
 {
@@ -654,6 +656,7 @@ function racoonTown()
           "<button onclick='racoonBuild(4)'>Building</button><br>" +
 		  back2mainmap;
   document.body.background = "../game/pic/racooncity.jpg";
+  alert("Welcome to Raccoon City, you better run... there are zombies lurking about.");
 }
 function racoonBuild(num)
 {
@@ -730,6 +733,7 @@ function electricTown()
           "<button onclick='electricBuild(4)'>Building</button><br>" +
 		  back2mainmap;
   document.body.background = "../game/pic/electriccity.jpg";
+  alert("Welcome to the land of the rising sun, now lets watch ANIME!");
 }
 function electricBuild(num)
 {
@@ -796,11 +800,12 @@ function electricPerson(num)
 }
 function palletTown()
 { mapdiv.innerHTML = 
-		"You must be strong to have made it this far but prepare to die" +
+		"I hope you were able to catch them all. You will need them to beat me!" +
 		"<br>" +
 		"<button onclick='battle(finalboss)'>FIGHT</button><br>" +
 		back2mainmap;
 	document.body.background = "../game/pic/pallettown.png";
+	alert("You must be strong to have made it this far but prepare to die!");
 }
 function gamewin(){
 alert("CONGRATULATIONS YOU WIN, YOU ARE A GIANT NERD");
