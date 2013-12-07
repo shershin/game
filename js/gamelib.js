@@ -15,11 +15,11 @@ var videogameenemy=new enemy("gamer",10,"movie","video game nerds spend much of 
 var movieenemy=new enemy("movie buff",10,"anime","movie buffs will constantly make references to their favorite movies.");
 var animeenemy=new enemy("otaku",10,"video game","The otaku collects figurines and loves the 'plot' of anime.");
 
-var nerdenemyboss=new enemy("generic nerd boss",10,"none","This is the first boss and the last boss.");
+var nerdenemyboss=new enemy("generic nerd boss",10,"none","Mr. Johnson");
 var videogameenemyboss=new enemy("gamer boss",20,"movie","This gamer boss is a professional.");
 var movieenemyboss=new enemy("movie buff boss",20,"anime","This movie boss knows everything about every movie.");
 var animeenemyboss=new enemy("otaku boss",20,"video game","This otaku hasn't left his room in years to continue watching anime.");
-var finalboss= new enemy("final boss", 50, "none", "This nerd laughs at your failed attempts to become one with nerdom.");
+var finalboss= new enemy("final boss", 60, "none", "This nerd laughs at your failed attempts to become one with nerdom.");
 var videogamenerd=new nerdclass("video game nerd",videogamemovelist);
 var nerd=new nerdclass("generic nerd",nerdmovelist);
 var movienerd=new nerdclass("movie nerd",moviemovelist);
@@ -27,6 +27,7 @@ var animenerd=new nerdclass("anime nerd",animemovelist);
 var turn;
 var nerdlist=[nerd];
 var itemlist=[];
+var tutorialflag=false;
 var player=
 {
 name:"Bob",
@@ -260,6 +261,11 @@ function itemuse(input)
 {
         switch(input){
         case "scanner":
+			if(tutorialflag)
+			{
+			alert("Good job, this item will give a quick description of the enemy and show their weakness.");
+			tutorialflag=false;
+			}
 			maindiv.innerHTML=currentenemy.description+" His weakness is "+currentenemy.weakness;
 			enemyaction();
         break;
@@ -284,7 +290,7 @@ function itemuse(input)
 				enemyaction();
 			}
 			else if(effect<70&&effect>=60){
-				maindiv.innerHTML="cheetos restores 8 life";
+				maindiv.innerHTML="cheetos restore 8 life";
 				player.health+=8;
 				if(player.health>player.maxhealth){
 				player.health=player.maxhealth;
@@ -328,9 +334,13 @@ function battleaction(id)
         maindiv.innerHTML="you attacked "+currentenemy.name+" for "+dmg+" damage."
         break;
         case "attack2":
-        temphealth--;
-        temphealth--;
+		dmg=2;
         maindiv.innerHTML="you attacked "+currentenemy.name+" for 2 damage."
+		if(player.currentnerdclass.name.indexOf(currentenemy.weakness)+1)
+        {
+                dmg=dmg*2;
+        }
+		temphealth=temphealth-dmg;
         break;
         case "defend":
         maindiv.innerHTML="you take 1/2 damage for 5 turns"
@@ -350,23 +360,27 @@ function battleaction(id)
 function enemyaction()
 {
         turn++;
-        var dmg=2;
+        emydmg=2;
+	if(tutorialflag){
+	tutorialaction();
+	}
     if(currentenemy.name.indexOf("boss")+1)
     {
-                dmg=Math.ceil(3*Math.random()+2);
+                emydmg=Math.ceil(3*Math.random()+2);
     }
     if(defendflag)
     {
-        dmg=Math.ceil(dmg/2);
+        emydmg=Math.ceil(emydmg/2);
         defendflag--;
     }
 	if(ringflag)
 	{
-	dmg=0;
+	emydmg=0;
 	ringflag--;
 	}
-    player.health=player.health-dmg;
-    maindiv.innerHTML=maindiv.innerHTML+"<br>"+currentenemy.name+" hit you for "+dmg+" damage."
+
+    player.health=player.health-emydmg;
+    maindiv.innerHTML=maindiv.innerHTML+"<br>"+currentenemy.name+" hit you for "+emydmg+" damage."
     battlecheck();
 }
 function battlecheck()
@@ -374,6 +388,14 @@ function battlecheck()
         mapdiv.innerHTML="your health="+player.health+"/"+player.maxhealth+" enemy health="+temphealth+"/"+currentenemy.health;
         if(temphealth<=0)
         {
+			if(player.firstboss===false){
+				if(tutorialflag)
+				{
+				nerdlist.splice(1,3);
+				itemlist.splice(0,4);
+				alert("I'll be taking anything I've given, go earn them back yourself.");
+				}
+			}
                 alert("Congratulations, you beat "+currentenemy.name+".");
                 if(currentenemy.name.indexOf("boss")+1)
                 {
@@ -447,15 +469,78 @@ function battlecheck()
 						return;
                         }
                 }
+				tutorialflag=false;
                 mapStart();
         }
         if(player.health<=0)
         {
                 alert("you got owned scrub");
+				tutorialflag=false;
                 mapStart();
         }
 }
-//map bitches
+function tutorial(i){
+tutorialflag=true;
+if(i===1){
+alert("Here you will learn to fight, go ahead and click the first button in attack menu");
+battle(nerdenemy);
+}
+else if(i===2){
+alert("Here you will learn to use items, I've given you all the items you will find in the game. In order to use an item just click the item button and any items you have will show up. Go ahead and use the scanner item now.");
+itemlist.push("scanner");
+itemlist.push("the one ring");
+itemlist.push("junk food");
+itemlist.push("senzu bean");
+battle(nerdenemy);
+}
+else if(i===3){
+alert("Here you will learn about the nerd classes, I've given you all the nerd powers you will find in the game. Just kill me to end this.");
+nerdlist.push(videogamenerd);
+nerdlist.push(animenerd);
+nerdlist.push(movienerd);
+battle(animeenemy);
+}
+}
+function tutorialaction(){
+	emydmg=0;
+	if(turn===1){
+	if(itemlist.length>1){
+	alert("the one ring will make you invulnerable for 3 turns, you better use it or I will kill you instantly");
+	}
+	else if(nerdlist.length>1){
+	alert("Each nerd you meet has a weakness, that you can find out using the scanner. If you go to the nerd menu and choose the class of nerd that corresponds to that weakness, they will take double damage from any attacks.");
+	}
+	else{
+	alert("The first attack does only 1 damage, but will increase in strength by 2 for 3 turns if you use the last attack in the menu");
+	}
+	}
+	else if(turn===2){
+	if(itemlist.length>1){
+	emydmg=100;
+	}
+	else if(nerdlist.length>1){
+	alert("Right now I am an anime nerd, maybe you can find what I am weak to before you kill me.");
+	}
+	else{
+	alert("The second attack will do 2 damage, but is unaffected by your status attack");
+	}
+	}
+	else if(turn===3){
+	if(itemlist.length>1){
+	alert("Looks like you're still alive, senzu bean will heal you fully. Junk food has completely random effects.");
+	}
+	else if(nerdlist.length>1){
+	alert("Before you fight each boss, it might be best to go fight a minion to find out their weakness or you can find out during the fight.");
+	}
+	else{
+	alert("The third attack is actually a defense move,use it to take half damage for 5 turns");
+	}
+	}
+	else{
+	alert("kill me to end the tutorial");
+	}
+}
+//map
 var back2mainmap;
 var maristBack;
 var mordorBack;
@@ -478,7 +563,7 @@ var palletbutton="<button onclick='palletTown()' id='paletTown' disabled=disable
 var electricbutton="<button onclick='electricTown()' id='electricTown' disabled=disabled>Electric Town</button>"
 var racoonbutton="<button onclick='racoonTown()' id='racoonTown' disabled=disabled>Raccoon City</button>";
 mapdiv.innerHTML =
-	"Click on the town you want to enter but you have to beat a few the current area in order to move to the next.<br>" +
+	"Click on the town you want to enter but you must complete the tutorial in Marist to access the others.<br>" +
 	maristbutton+ "<br>" +mordorbutton+electricbutton+racoonbutton+ "<br>" +palletbutton;
 if(player.firstboss)
 {
@@ -502,7 +587,6 @@ back2mainmap = "<button onclick='mapStart()'>Back</button>";
 }
 function maristBuild(num)
 {
-maristFight = "<button onclick='battle(nerdenemy)'>FIGHT</button>";
 maristBack = "<button onclick='maristTown()'>Back</button>";
   if (num === 1)
       { mapdiv.innerHTML =
@@ -521,7 +605,7 @@ maristBack = "<button onclick='maristTown()'>Back</button>";
                 "<button onclick='maristPerson(3)'>Person</button>" +
                 "<br>"+
                 maristBack;
-      }
+      }	
   else
       { mapdiv.innerHTML =
                 "<button onclick='maristPerson(4)'>Person</button>" +
@@ -533,37 +617,26 @@ function maristPerson(num)
 { 
   if (num === 1)
       { mapdiv.innerHTML =
-                "Studying sucks! Mr. Johnson assigns so much work agh." +
-				"<br>"+
-                maristFight +
-				"<br>" +
+                "Learn about fighting from me!" +
+				"<br>All of the tutorial and instructions are optional and you can go fight the boss in the last building to advance if you want.<br><button onclick='tutorial(1)'>FIGHT</button><br>" +
 				 maristBack;
       }
   else if (num === 2)
       { mapdiv.innerHTML =
-                "Have you meet Michael Shershin or Keshine O\'young....I haven\'t but I herd they are two amazing guys." +
-                "<br>" +
-				maristFight +
-				"<br>" +
+                "Learn about using items from me!" +
+                "<br>All of the tutorial and instructions are optional and you can go fight the boss in the last building to advance if you want.<br><button onclick='tutorial(2)'>FIGHT</button><br>" +
 				maristBack;
       }
   else if (num === 3)
       { mapdiv.innerHTML = 
-                "Oh you must be " + player.name +
-                ", I must tell you that the journy will be long and difficult, but to help you I shall give you a hint." + 
-                "Try to talk to everyone they may give you more helpful hints." + 
-                "<br>Also be wary of the darkside." +
-				"<br>"+
-                maristFight +
-				"<br>" +
+                "Learn about the different classes from me!" +
+				"<br>All of the tutorial and instructions are optional and you can go fight the boss in the last building to advance if you want.<br><button onclick='tutorial(3)'>FIGHT</button><br>" +
 				maristBack;
       }
   else
 	  { mapdiv.innerHTML =
-				"Welcome to my lair " + player.name +
-				" it is time to battle" +
-				"<br>" +
-				"<button onclick='battle(nerdenemyboss)'>FIGHT</button><br>" +
+				"I am Mr. Johnson, I will test if you are ready to play the game." +
+				"<br><button onclick='battle(nerdenemyboss)'>FIGHT</button><br>" +
 				maristBack;
 	  }
 		
