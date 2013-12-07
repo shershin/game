@@ -335,11 +335,7 @@ function battleaction(id)
         break;
         case "attack2":
 		dmg=2;
-        maindiv.innerHTML="you attacked "+currentenemy.name+" for 2 damage."
-		if(player.currentnerdclass.name.indexOf(currentenemy.weakness)+1)
-        {
-                dmg=dmg*2;
-        }
+        maindiv.innerHTML="you attacked "+currentenemy.name+" for "+dmg+" damage."
 		temphealth=temphealth-dmg;
         break;
         case "defend":
@@ -480,25 +476,40 @@ function battlecheck()
         }
 }
 function tutorial(i){
+if(player.firstboss===false){
 tutorialflag=true;
+}
+else{
+tutorialflag=false;
+alert("looks like you've beaten mr.johnson already, we will simply fight you normally now.");
+}
 if(i===1){
-alert("Here you will learn to fight, go ahead and click the first button in attack menu");
-battle(nerdenemy);
+	if(player.firstboss===false){
+		alert("Here you will learn to fight, go ahead and click the first button in attack menu");
+	}
+	battle(nerdenemy);
 }
 else if(i===2){
-alert("Here you will learn to use items, I've given you all the items you will find in the game. In order to use an item just click the item button and any items you have will show up. Go ahead and use the scanner item now.");
-itemlist.push("scanner");
-itemlist.push("the one ring");
-itemlist.push("junk food");
-itemlist.push("senzu bean");
+	if(player.firstboss===false){
+		alert("Here you will learn to use items, I've given you all the items you will find in the game. In order to use an item just click the item button and any items you have will show up. Go ahead and use the scanner item now.");
+		itemlist.push("scanner");
+		itemlist.push("the one ring");
+		itemlist.push("junk food");
+		itemlist.push("senzu bean");
+}
 battle(nerdenemy);
 }
 else if(i===3){
-alert("Here you will learn about the nerd classes, I've given you all the nerd powers you will find in the game. Just kill me to end this.");
-nerdlist.push(videogamenerd);
-nerdlist.push(animenerd);
-nerdlist.push(movienerd);
-battle(animeenemy);
+	if(player.firstboss===false){
+		alert("Here you will learn about the nerd classes, I've given you all the nerd powers you will find in the game. Just kill me to end this.");
+		nerdlist.push(videogamenerd);
+		nerdlist.push(animenerd);
+		nerdlist.push(movienerd);
+		battle(animeenemy);
+	}
+	else{
+		battle(nerdenemy);
+	}
 }
 }
 function tutorialaction(){
@@ -508,10 +519,10 @@ function tutorialaction(){
 	alert("the one ring will make you invulnerable for 3 turns, you better use it or I will kill you instantly");
 	}
 	else if(nerdlist.length>1){
-	alert("Each nerd you meet has a weakness, that you can find out using the scanner. If you go to the nerd menu and choose the class of nerd that corresponds to that weakness, they will take double damage from any attacks.");
+	alert("Each nerd you meet has a weakness, that you can find out using the scanner. If you go to the nerd menu and choose the class of nerd that corresponds to that weakness, they will take double damage from your main attack.");
 	}
 	else{
-	alert("The first attack does only 1 damage, but will increase in strength by 2 for 3 turns if you use the last attack in the menu");
+	alert("The first attack is your main attack and only does 1 damage, but will increase in strength by 2 for 3 turns if you use the last move in the menu");
 	}
 	}
 	else if(turn===2){
@@ -522,7 +533,7 @@ function tutorialaction(){
 	alert("Right now I am an anime nerd, maybe you can find what I am weak to before you kill me.");
 	}
 	else{
-	alert("The second attack will do 2 damage, but is unaffected by your status attack");
+	alert("The second attack will always do 2 damage and will not change");
 	}
 	}
 	else if(turn===3){
